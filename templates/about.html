@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+  
+<h1>This is homepage. </h1>
+<p> This page describes our mission and our portfolio.</p>
+
+<p>
+{{ my_text }}, {{ my_num }}, {{ my_lis}}  <!--context variable, these is key of context defined in views.py-->
+
+</p>
+
+<ul>
+ <li>Item 1</li>
+ <li>Item 2</li>
+</ul>
+<ul>
+{% for my_sub_item in my_lis %}  <!-- for loop in template-->
+ {% if my_sub_item == 123 %}  <!--space sensitive -->
+   <li>{{forloop.counter }} - {{my_sub_item|add:123}}</li>  <!-- counter counts the iteration number-->
+ {% else %}
+   <li>{{forloop.counter }} - {{my_sub_item}}</li> 
+ {% endif %}
+{% endfor %}                      <!-- end for loop-->
+</ul>
+ 
+{% endblock %}
